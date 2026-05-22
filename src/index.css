@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* Premium Glassmorphic Glow Card styling */
+  .bg-glass {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(100, 116, 139, 0.15);
+  }
+
+  /* Custom Glow Accents */
+  .glow-indigo {
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.15);
+  }
+  
+  .glow-emerald {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+  }
+}
+
+/* Custom fade-in animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Customize browser scrollbars for theme continuity */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Print CSS to make sure PDF download preserves colors, margins and strips interactive inputs */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Selectively print the resume workspace only */
+  #root, header, footer, button, select, input, textarea {
+    display: none !important;
+  }
+  
+  /* Make sure the resume print page is visible and expands */
+  .max-w-4xl, .max-w-4xl * {
+    visibility: visible;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  
+  .max-w-4xl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+}
+
